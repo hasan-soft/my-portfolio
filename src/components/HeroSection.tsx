@@ -1,7 +1,15 @@
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Twitter, Facebook, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
+  const socialLinks = [
+    { icon: Github, href: "https://github.com", label: "GitHub" },
+    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+    { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+    { icon: Mail, href: "mailto:hasan@example.com", label: "Email" },
+  ];
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden bg-gradient-to-br from-background via-background to-secondary/30">
       {/* Decorative elements */}
@@ -41,36 +49,27 @@ const HeroSection = () => {
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="gap-2" asChild>
-                <a href="#projects">
-                  View Projects
+                <a href="/resume.pdf" download>
+                  <Download className="w-4 h-4" />
+                  Download Resume
                 </a>
               </Button>
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center justify-center lg:justify-start gap-4 pt-6 animate-fade-in" style={{ animationDelay: "0.5s" }}>
-              <a 
-                href="https://github.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-card border border-border hover:border-primary hover:text-primary transition-all duration-300 hover:-translate-y-1"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-card border border-border hover:border-primary hover:text-primary transition-all duration-300 hover:-translate-y-1"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a 
-                href="mailto:hasan@example.com"
-                className="p-3 rounded-full bg-card border border-border hover:border-primary hover:text-primary transition-all duration-300 hover:-translate-y-1"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
+            <div className="flex items-center justify-center lg:justify-start gap-3 pt-6 animate-fade-in" style={{ animationDelay: "0.5s" }}>
+              {socialLinks.map((social) => (
+                <a 
+                  key={social.label}
+                  href={social.href}
+                  target={social.href.startsWith("mailto") ? undefined : "_blank"}
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-card border border-border hover:border-primary hover:text-primary transition-all duration-300 hover:-translate-y-1"
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -79,7 +78,17 @@ const HeroSection = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-2xl scale-110" />
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/20 to-secondary border-4 border-primary/20 overflow-hidden animate-float">
-                <div className="absolute inset-0 flex items-center justify-center text-primary/30 text-6xl font-bold">
+                {/* Replace with your actual photo */}
+                <img 
+                  src="/profile-photo.jpg" 
+                  alt="Hasan Bhuiyan - MERN Stack Developer"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                <div className="hidden absolute inset-0 flex items-center justify-center text-primary/30 text-6xl font-bold">
                   HB
                 </div>
               </div>

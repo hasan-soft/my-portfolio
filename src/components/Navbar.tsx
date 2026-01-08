@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
@@ -17,6 +17,8 @@ const Navbar = () => {
   const navLinks = [
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
+    { href: "#education", label: "Education" },
+    { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
   ];
@@ -32,12 +34,12 @@ const Navbar = () => {
       <div className="container mx-auto max-w-6xl px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="text-xl font-bold text-primary">
+          <a href="/" className="text-xl font-bold text-primary">
             HB<span className="text-foreground">.</span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -47,14 +49,17 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button size="sm" asChild>
-              <a href="#contact">Hire Me</a>
+            <Button size="sm" className="gap-2" asChild>
+              <a href="/resume.pdf" download>
+                <Download className="w-4 h-4" />
+                Resume
+              </a>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="lg:hidden p-2 text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -64,7 +69,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
+          <div className="lg:hidden py-4 border-t border-border animate-fade-in">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
@@ -76,9 +81,10 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <Button size="sm" className="w-fit" asChild>
-                <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Hire Me
+              <Button size="sm" className="gap-2 w-fit" asChild>
+                <a href="/resume.pdf" download onClick={() => setIsMobileMenuOpen(false)}>
+                  <Download className="w-4 h-4" />
+                  Download Resume
                 </a>
               </Button>
             </div>
