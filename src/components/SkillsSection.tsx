@@ -7,12 +7,12 @@ const SkillsSection = () => {
     {
       title: "Frontend",
       skills: [
-        { name: "React.js", level: 95 },
+        { name: "React.js", level: 80 },
+        { name: "JavaScript", level: 85 },
         { name: "Next.js", level: 85 },
-        { name: "TypeScript", level: 88 },
         { name: "Tailwind CSS", level: 92 },
-        { name: "Redux", level: 80 },
-        { name: "HTML5/CSS3", level: 95 },
+        { name: "CSS3", level: 90 },
+        { name: "HTML5", level: 95 },
       ],
     },
     {
@@ -20,10 +20,7 @@ const SkillsSection = () => {
       skills: [
         { name: "Node.js", level: 90 },
         { name: "Express.js", level: 88 },
-        { name: "REST APIs", level: 92 },
-        { name: "GraphQL", level: 75 },
-        { name: "JWT Auth", level: 85 },
-        { name: "Socket.io", level: 78 },
+        { name: "JWT Auth", level: 78 },
       ],
     },
     {
@@ -31,8 +28,6 @@ const SkillsSection = () => {
       skills: [
         { name: "MongoDB", level: 90 },
         { name: "Mongoose", level: 88 },
-        { name: "PostgreSQL", level: 75 },
-        { name: "Redis", level: 70 },
         { name: "Firebase", level: 80 },
       ],
     },
@@ -40,10 +35,8 @@ const SkillsSection = () => {
       title: "Tools",
       skills: [
         { name: "Git", level: 92 },
-        { name: "Docker", level: 70 },
-        { name: "AWS", level: 65 },
         { name: "Vercel", level: 88 },
-        { name: "Postman", level: 90 },
+        { name: "Postman", level: 80 },
         { name: "Figma", level: 75 },
       ],
     },

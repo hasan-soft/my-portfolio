@@ -1,44 +1,48 @@
 import { ExternalLink, Github, Folder, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import lifeLessonImg from "../assets/lifelesson.png";
+import plateShareImg from "../assets/plateshare.png";
+import skillShareImg from "../assets/skillshare.png";
+import heroImg from "../assets/hero.png";
 
 const ProjectsSection = () => {
   const projects = [
     {
-      id: "ecommerce-platform",
-      title: "E-Commerce Platform",
-      description: "A full-featured online store with cart, checkout, payment integration, and admin dashboard built with the MERN stack.",
-      image: "/projects/ecommerce.jpg",
+      id: "life-lesson",
+      title: "Digital life lesson",
+      description: "WisdomCell is a lesson-sharing and reflection platform where users can create, explore, and save meaningful lessons focused on personal growth, mindset, career, and emotional well-being. built with the MERN stack.",
+      image: lifeLessonImg,
       tags: ["React", "Node.js", "MongoDB", "Stripe"],
-      github: "https://github.com",
-      demo: "https://example.com",
+      github: "https://github.com/hasan-soft/project-11-client?tab=readme-ov-file",
+      demo: "https://wisdomcell-auth.web.app/",
     },
     {
-      id: "task-management",
-      title: "Task Management App",
-      description: "Real-time collaborative task manager with drag-and-drop, team workspaces, and progress tracking.",
-      image: "/projects/taskmanager.jpg",
-      tags: ["React", "Express", "Socket.io", "JWT"],
-      github: "https://github.com",
-      demo: "https://example.com",
+      id: "food-donation",
+      title: "Food Donation App",
+      description: "PlateShare is a community-driven platform that connects food donors with people in need. The goal is simple",
+      image: plateShareImg,
+      tags: ["React", "Express", "Firebase"],
+      github: "https://github.com/hasan-soft/project-10-client",
+      demo: "https://preeminent-blini-200a9a.netlify.app/",
     },
     {
-      id: "social-dashboard",
-      title: "Social Media Dashboard",
-      description: "Analytics dashboard for social media management with data visualization and scheduled posting features.",
-      image: "/projects/dashboard.jpg",
-      tags: ["Next.js", "Node.js", "Chart.js", "PostgreSQL"],
-      github: "https://github.com",
-      demo: "https://example.com",
+      id: "skill-share",
+      title: "Digital Skill Share App",
+      description: "Skill Share is a digital platform where people can share their skills and learn new ones from others. Users can post short lessons, tips, and experiences on various topics, making learning simple and practical.",
+      image: skillShareImg,
+      tags: ["Next.js", "Node.js", "React Swiper.js", "TailwindCSS"],
+      github: "https://github.com/hasan-soft/tune-track",
+      demo: "https://tunetrack-auth-6a51e.web.app/",
     },
     {
-      id: "blog-platform",
-      title: "Blog Platform",
-      description: "A modern blogging platform with rich text editor, comments, and SEO optimization.",
-      image: "/projects/blog.jpg",
-      tags: ["React", "Node.js", "MongoDB", "TipTap"],
-      github: "https://github.com",
-      demo: "https://example.com",
+      id: "app-platform",
+      title: "Apps Platform",
+      description: "Discover, Compare, and Install Apps with Confidence",
+      image: heroImg,
+      tags: ["React", "Recharts", "TailwindCSS"],
+      github: "https://github.com/hasan-soft/Assignment-08",
+      demo: "https://serene-blancmange-088305.netlify.app/",
     },
   ];
 
@@ -134,7 +138,7 @@ const ProjectsSection = () => {
 
         <div className="text-center mt-12">
           <Button variant="outline" size="lg" className="gap-2" asChild>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/hasan-soft?tab=repositories" target="_blank" rel="noopener noreferrer">
               <Github className="w-4 h-4" />
               View More on GitHub
             </a>

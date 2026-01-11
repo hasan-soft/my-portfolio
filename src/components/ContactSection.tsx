@@ -3,30 +3,30 @@ import { Button } from "@/components/ui/button";
 
 const ContactSection = () => {
   const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/hasan-soft", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/hasan-bhuiyan503/", label: "LinkedIn" },
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+    { icon: Facebook, href: "https://www.facebook.com/user.hasanbro", label: "Facebook" },
   ];
 
   const contactInfo = [
     { 
       icon: Mail, 
       label: "Email", 
-      value: "hasan@example.com", 
-      href: "mailto:hasan@example.com" 
+      value: "hasanbhuiyan503@gmail.com", 
+      href: "mailto:hasanbhuiyan503@gmail.com" 
     },
     { 
       icon: Phone, 
       label: "Phone", 
-      value: "+880 1234 567890", 
-      href: "tel:+8801234567890" 
+      value: "+8801719103858", 
+      href: "tel:+8801719103858" 
     },
     { 
       icon: MessageCircle, 
       label: "WhatsApp", 
-      value: "+880 1234 567890", 
-      href: "https://wa.me/8801234567890" 
+      value: "+8801719103858", 
+      href: "https://wa.me/8801719103858" 
     },
   ];
 
@@ -67,7 +67,7 @@ const ContactSection = () => {
         {/* CTA Section */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <Button size="lg" className="gap-2" asChild>
-            <a href="mailto:hasan@example.com">
+            <a href="mailto:hasanbhuiyan503@gmail.com">
               <Send className="w-4 h-4" />
               Send a Message
             </a>

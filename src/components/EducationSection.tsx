@@ -3,26 +3,26 @@ import { GraduationCap, Calendar, MapPin } from "lucide-react";
 const EducationSection = () => {
   const education = [
     {
-      degree: "Bachelor of Science in Computer Science",
-      institution: "University of Dhaka",
+      degree: "Bachelor of Business Studies",
+      institution: "Mohammadpur Central University College",
       location: "Dhaka, Bangladesh",
-      period: "2018 - 2022",
-      description: "Graduated with honors. Focused on software engineering, data structures, algorithms, and web development. Participated in various coding competitions and hackathons.",
+      period: "2019 - 2024",
+      description: "Graduated with honors in Bachelor of Business Studies (BBS), with a strong focus on business management, finance, marketing, and entrepreneurship.",
       achievements: [
-        "CGPA: 3.75/4.00",
+        "CGPA: 2.75/4.00",
         "Dean's List for Academic Excellence",
         "Lead of University Programming Club",
       ],
     },
     {
       degree: "Higher Secondary Certificate (HSC)",
-      institution: "Dhaka College",
-      location: "Dhaka, Bangladesh",
-      period: "2016 - 2018",
-      description: "Completed HSC in Science group with a focus on Mathematics and Physics. Developed initial interest in programming during this time.",
+      institution: "Gazipur Khan Govt Model School And College",
+      location: "Cumilla, Bangladesh",
+      period: "2015 - 2017",
+      description: "Completed HSC in Business group with a focus on Accounting and Finance. Developed initial interest in programming during this time.",
       achievements: [
-        "GPA: 5.00/5.00",
-        "Science Group",
+        "GPA: 3.44/5.00",
+        "Commerce Group",
       ],
     },
   ];

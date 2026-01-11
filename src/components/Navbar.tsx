@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import logo from "../assets/hasan.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,10 +36,9 @@ const Navbar = () => {
       <div className="container mx-auto max-w-6xl px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="/" className="text-xl font-bold text-primary">
-            HB<span className="text-foreground">.</span>
-          </a>
-
+          <a href="/">
+  <img src={logo} alt="LOGO" className="h-24" />
+</a>
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (

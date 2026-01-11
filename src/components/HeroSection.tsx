@@ -1,13 +1,14 @@
 import { ArrowDown, Github, Linkedin, Mail, Twitter, Facebook, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import profile from "../assets/my.jpeg";
 
 const HeroSection = () => {
   const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/hasan-soft", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/hasan-bhuiyan503/", label: "LinkedIn" },
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-    { icon: Mail, href: "mailto:hasan@example.com", label: "Email" },
+    { icon: Facebook, href: "https://www.facebook.com/user.hasanbro", label: "Facebook" },
+    { icon: Mail, href: "mailto:hasanbhuiyan503@gmail.com", label: "Email" },
   ];
 
   return (
@@ -89,7 +90,7 @@ const HeroSection = () => {
                   }}
                 />
                 <div className="hidden absolute inset-0 flex items-center justify-center text-primary/30 text-6xl font-bold">
-                  HB
+                  <img src={profile} alt="LOGO" className="" />
                 </div>
               </div>
               {/* Tech badges */}

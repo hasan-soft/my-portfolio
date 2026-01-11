@@ -2,51 +2,55 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Github, Code2, Lightbulb, AlertTriangle, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
+import lifeLessonImg from "../assets/lifelesson.png";
+import plateShareImg from "../assets/plateshare.png";
+import skillShareImg from "../assets/skillshare.png";
+import heroImg from "../assets/hero.png";
 
 const projectsData = {
-  "ecommerce-platform": {
-    title: "E-Commerce Platform",
-    description: "A comprehensive e-commerce solution built from scratch using the MERN stack. This platform provides a seamless shopping experience with features like product browsing, cart management, secure checkout, and an admin dashboard for inventory management.",
-    image: "/projects/ecommerce.jpg",
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Redux", "JWT", "Cloudinary"],
+  "life-lesson": {
+    title: "Digital life lesson",
+    description: "WisdomCell is a lesson-sharing and reflection platform where users can create, explore, and save meaningful lessons focused on personal growth, mindset, career, and emotional well-being. built with the MERN stack.",
+    image: lifeLessonImg,
+    liveUrl: "https://wisdomcell-auth.web.app/",
+    githubUrl: "https://github.com/hasan-soft/project-11-client",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Cloudinary"],
     features: [
-      "User authentication and authorization",
-      "Product catalog with search and filters",
-      "Shopping cart and wishlist",
+      "Users can save favorite lessons and track their contributions through a personalized dashboard with analytics.",
+      "Admin panel to manage lessons, users, reported content, and monitor platform-wide analytics.",
+      "Users can create, edit, and manage their own lessons with privacy and access control (public/private, free/premium).",
       "Secure payment integration with Stripe",
-      "Order tracking and history",
-      "Admin dashboard for product management",
+      "Advanced lesson browsing with category, emotional tone, search, sorting, and pagination support.",
+      "Dynamic dashboards for both users and admins, including statistics, recent activity, and growth charts.",
       "Responsive design for all devices",
     ],
     challenges: [
-      "Implementing real-time inventory updates across multiple user sessions was complex. Solved using WebSocket connections for instant synchronization.",
+      "Implementing real-time inventory updates across multiple user sessions was complex.",
       "Optimizing product image loading for better performance required implementing lazy loading and image compression strategies.",
       "Handling payment edge cases like failed transactions and refunds needed careful error handling and transaction logging.",
     ],
     improvements: [
-      "Add AI-powered product recommendations based on user browsing history",
-      "Implement multi-vendor marketplace functionality",
+      "Add AI-powered lessons recommendations based on user browsing history",
+      "Implement multi-vendor lesson functionality",
       "Add mobile app using React Native",
       "Integrate more payment gateways for international customers",
     ],
   },
-  "task-management": {
-    title: "Task Management App",
-    description: "A real-time collaborative task management application designed for teams. Features drag-and-drop kanban boards, team workspaces, and comprehensive progress tracking with analytics.",
-    image: "/projects/taskmanager.jpg",
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "JWT", "React DnD", "Chart.js"],
+  "food-donation": {
+    title: "Food Donation App",
+    description: "PlateShare is a community-driven platform that connects food donors with people in need. The goal is simple: reduce food waste and help the community by making extra food accessible.",
+    image: plateShareImg,
+    liveUrl: "https://preeminent-blini-200a9a.netlify.app/",
+    githubUrl: "https://github.com/hasan-soft/project-10-client",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Firebase"],
     features: [
-      "Drag-and-drop kanban boards",
-      "Real-time collaboration with team members",
-      "Task assignments and due dates",
-      "Progress tracking with visual charts",
-      "Team workspaces and permissions",
-      "Comment threads on tasks",
-      "Email notifications for updates",
+      "Share Extra Food Easily — Donors can post food with photo, expiry date, and pickup details.",
+      "Connect With People in Need — Receivers can request food instantly.",
+      "Location-Based Food Listings — Shows foods available near the user.",
+      "Real-Time Status Update — Food goes from Available → Requested → Donated.",
+      "Secure Authentication — Login, register, and private routes.",
+      "Request Approval System — Donors can accept or reject requests.",
+      "Reduces Food Waste — Promotes sustainability and social impact.",
     ],
     challenges: [
       "Synchronizing drag-and-drop actions in real-time across multiple users required careful state management and conflict resolution.",
@@ -57,16 +61,16 @@ const projectsData = {
       "Add time tracking feature for tasks",
       "Implement recurring tasks functionality",
       "Add integration with calendar apps (Google Calendar, Outlook)",
-      "Build mobile app for on-the-go task management",
+      "Build mobile app for on-the-go food donation",
     ],
   },
-  "social-dashboard": {
-    title: "Social Media Dashboard",
-    description: "A comprehensive analytics dashboard for managing multiple social media accounts. Provides insights, scheduled posting, and engagement tracking across platforms.",
-    image: "/projects/dashboard.jpg",
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    technologies: ["Next.js", "Node.js", "PostgreSQL", "Chart.js", "OAuth", "Bull Queue", "Redis"],
+  "skill-share": {
+    title: "Digital Skill Share App",
+    description: "Skill Share is a digital platform where people can share their skills and learn new ones from others. Users can post short lessons, tips, and experiences on various topics, making learning simple and practical. This platform encourages knowledge sharing and helps individuals grow their skills in an easy and collaborative way.",
+    image: skillShareImg,
+    liveUrl: "https://github.com/hasan-soft/tune-track",
+    githubUrl: "https://tunetrack-auth-6a51e.web.app/",
+    technologies: ["Next.js", "Node.js", "React.js", "TailwindCSS"],
     features: [
       "Multi-platform social media integration",
       "Post scheduling with queue management",
@@ -88,13 +92,13 @@ const projectsData = {
       "Build a browser extension for quick posting",
     ],
   },
-  "blog-platform": {
-    title: "Blog Platform",
-    description: "A modern blogging platform with a rich text editor, user authentication, comments system, and SEO optimization features. Perfect for content creators and businesses.",
-    image: "/projects/blog.jpg",
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    technologies: ["React", "Node.js", "MongoDB", "TipTap", "JWT", "AWS S3", "Redis"],
+  "app-platform": {
+    title: "Apps Platform",
+    description: "HeroStore focuses on simplicity, performance, and usability, making it easy for users to find reliable and trending apps.",
+    image: heroImg,
+    liveUrl: "https://serene-blancmange-088305.netlify.app/",
+    githubUrl: "https://github.com/hasan-soft/Assignment-08",
+    technologies: ["React", "TailwindCSS"],
     features: [
       "Rich text editor with formatting options",
       "Image upload and management",
@@ -110,7 +114,7 @@ const projectsData = {
       "Handling image uploads and optimization for different screen sizes needed a robust media pipeline.",
     ],
     improvements: [
-      "Add newsletter subscription feature",
+      "Add Apps subscription feature",
       "Implement content monetization options",
       "Add collaborative writing for multiple authors",
       "Build an analytics dashboard for authors",

@@ -36,12 +36,12 @@ const AboutSection = () => {
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold text-primary">My Programming Journey</h3>
             <p className="text-muted-foreground leading-relaxed">
-              My coding adventure began during my university days when I stumbled upon HTML and CSS. 
+              My coding adventure began during my college days when I stumbled upon HTML and CSS. 
               What started as curiosity quickly turned into passion. I spent countless nights learning 
               JavaScript, then moved on to React, and eventually fell in love with the MERN stack.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Over the past 3+ years, I've worked on diverse projects ranging from e-commerce platforms 
+              Over the past 1+ years, I've worked on diverse projects ranging from e-commerce platforms 
               to real-time collaboration tools. Each project taught me something new and pushed me to 
               become a better developer. I believe in continuous learning and staying updated with 
               the latest technologies.
