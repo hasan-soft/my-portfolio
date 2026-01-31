@@ -6,7 +6,7 @@ const ContactSection = () => {
     { icon: Github, href: "https://github.com/hasan-soft", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/hasan-bhuiyan503/", label: "LinkedIn" },
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Facebook, href: "https://www.facebook.com/user.hasanbro", label: "Facebook" },
+    { icon: Facebook, href: "https://www.facebook.com/hasan.soft503", label: "Facebook" },
   ];
 
   const contactInfo = [

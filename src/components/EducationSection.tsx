@@ -11,7 +11,6 @@ const EducationSection = () => {
       achievements: [
         "CGPA: 2.75/4.00",
         "Dean's List for Academic Excellence",
-        "Lead of University Programming Club",
       ],
     },
     {
