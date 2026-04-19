@@ -41,7 +41,8 @@ const ContactSection = () => {
             Let's Work Together
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            I'm always open to discussing new projects, creative ideas, or
+            opportunities to be part of your vision.
           </p>
         </div>
 
@@ -97,7 +98,8 @@ const ContactSection = () => {
         {/* Copyright */}
         <div className="text-center pt-8 border-t border-border">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Hasan Bhuiyan. Built with React & Tailwind CSS.
+            © {new Date().getFullYear()} Hasan Bhuiyan. Built with ❤️ using
+            Next.js, React & Tailwind CSS.
           </p>
         </div>
       </div>
