@@ -9,7 +9,6 @@ const EducationSection = () => {
       period: "2019 - 2024",
       description: "Graduated with honors in Bachelor of Business Studies (BBS), with a strong focus on business management, finance, marketing, and entrepreneurship.",
       achievements: [
-        "CGPA: 2.75/4.00",
         "Dean's List for Academic Excellence",
       ],
     },

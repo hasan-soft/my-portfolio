@@ -34,13 +34,14 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto max-w-6xl px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a href="/">
-  <img src={logo} alt="LOGO" className="h-24" />
-</a>
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
+        <div className="flex items-center h-16 px-6">
+          {/* Logo - Left */}
+          <a href="/" className="flex-shrink-0">
+            <img src={logo} alt="Hasan Bhuiyan" className="h-24 w-auto" />{" "}
+          </a>
+
+          {/* Navigation Links - Center */}
+          <div className="hidden lg:flex flex-1 justify-center items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -50,7 +51,12 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+          </div>
+
+          {/* Right Side: Theme + Resume Button */}
+          <div className="flex items-center gap-3 ml-auto">
             <ThemeToggle />
+
             <Button size="sm" className="gap-2" asChild>
               <a href="/resume.pdf" download>
                 <Download className="w-4 h-4" />
@@ -60,14 +66,18 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2 ml-4">
             <ThemeToggle />
             <button
               className="p-2 text-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -87,7 +97,11 @@ const Navbar = () => {
                 </a>
               ))}
               <Button size="sm" className="gap-2 w-fit" asChild>
-                <a href="/resume.pdf" download onClick={() => setIsMobileMenuOpen(false)}>
+                <a
+                  href="/resume.pdf"
+                  download
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   <Download className="w-4 h-4" />
                   Download Resume
                 </a>
