@@ -1,6 +1,7 @@
 import { ExternalLink, Github, Folder, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import insightAiImg from "../assets/insightAI.png";
 import lifeLessonImg from "../assets/lifelesson.png";
 import plateShareImg from "../assets/plateshare.png";
 import skillShareImg from "../assets/skillshare.png";
@@ -9,18 +10,31 @@ import heroImg from "../assets/hero.png";
 const ProjectsSection = () => {
   const projects = [
     {
+      id: "insight-ai",
+      title: "AI Content Generation & News Platform",
+      description:
+        "A modern full-stack platform crafted to bridge the gap between AI efficiency and human creativity. Leveraging Next.js and Gemini AI, it empowers users to create high-quality, meaningful articles in seconds—without losing the authenticity of human expression.",
+      image: insightAiImg,
+      tags: ["React", "Node.js", "MongoDB", "Stripe", "Next.js", "Typescript"],
+      github: "https://github.com/hasan-soft/insight-ai",
+      demo: "https://insight-ai-ochre.vercel.app/",
+    },
+    {
       id: "life-lesson",
       title: "Digital life lesson",
-      description: "WisdomCell is a lesson-sharing and reflection platform where users can create, explore, and save meaningful lessons focused on personal growth, mindset, career, and emotional well-being. built with the MERN stack.",
+      description:
+        "WisdomCell is a lesson-sharing and reflection platform where users can create, explore, and save meaningful lessons focused on personal growth, mindset, career, and emotional well-being. built with the MERN stack.",
       image: lifeLessonImg,
       tags: ["React", "Node.js", "MongoDB", "Stripe"],
-      github: "https://github.com/hasan-soft/project-11-client?tab=readme-ov-file",
+      github:
+        "https://github.com/hasan-soft/project-11-client?tab=readme-ov-file",
       demo: "https://wisdomcell-auth.web.app/",
     },
     {
       id: "food-donation",
       title: "Food Donation App",
-      description: "PlateShare is a community-driven platform that connects food donors with people in need. The goal is simple",
+      description:
+        "PlateShare is a community-driven platform that connects food donors with people in need. The goal is simple",
       image: plateShareImg,
       tags: ["React", "Express", "Firebase"],
       github: "https://github.com/hasan-soft/project-10-client",
@@ -29,7 +43,8 @@ const ProjectsSection = () => {
     {
       id: "skill-share",
       title: "Digital Skill Share App",
-      description: "Skill Share is a digital platform where people can share their skills and learn new ones from others. Users can post short lessons, tips, and experiences on various topics, making learning simple and practical.",
+      description:
+        "Skill Share is a digital platform where people can share their skills and learn new ones from others. Users can post short lessons, tips, and experiences on various topics, making learning simple and practical.",
       image: skillShareImg,
       tags: ["Next.js", "Node.js", "React Swiper.js", "TailwindCSS"],
       github: "https://github.com/hasan-soft/tune-track",

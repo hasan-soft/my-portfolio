@@ -103,11 +103,11 @@ const SkillsSection = () => {
                 <div key={skill.name} className="group">
                   <div className="flex justify-between items-end mb-4">
                     <div>
-                      <span className="font-semibold text-xl text-foreground tracking-tight">
+                      <span className="font-semibold text-base text-foreground tracking-tight">
                         {skill.name}
                       </span>
                     </div>
-                    <span className="text-2xl font-semibold text-primary tabular-nums transition-all duration-700">
+                    <span className="text-lg font-semibold text-primary tabular-nums transition-all duration-700">
                       {currentLevel}%
                     </span>
                   </div>
@@ -156,7 +156,7 @@ const SkillsSection = () => {
               className="p-7 rounded-3xl bg-card border border-border hover:border-primary/30 
                          transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
             >
-              <h3 className="text-2xl font-bold mb-6 text-primary">
+              <h3 className="text-xl font-bold mb-6 text-primary">
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-3">
