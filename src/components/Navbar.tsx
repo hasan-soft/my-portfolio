@@ -55,8 +55,6 @@ const Navbar = () => {
 
           {/* Right Side: Theme + Resume Button */}
           <div className="flex items-center gap-3 ml-auto">
-            <ThemeToggle />
-
             <Button size="sm" className="gap-2" asChild>
               <a href="/Hasan_resume.pdf" download>
                 <Download className="w-4 h-4" />
