@@ -1,195 +1,204 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { 
+  Code2, 
+  Server, 
+  Database, 
+  Wrench, 
+  Cpu, 
+  Sparkles, 
+  CheckCircle2, 
+  Layers
+} from "lucide-react";
+
+interface SkillItem {
+  name: string;
+  category: "Frontend" | "Backend" | "Database" | "Tools";
+  tier: "Intermediate" | "Comfortable" | "Familiar";
+  description: string;
+}
 
 const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("Frontend");
-  const [animatedLevels, setAnimatedLevels] = useState<Record<string, number>>(
-    {},
-  );
+  const [activeFilter, setActiveFilter] = useState<string>("All");
 
-  const skillCategories = [
+  const categories = [
+    { id: "All", label: "All Skills", icon: Layers },
+    { id: "Frontend", label: "Frontend", icon: Code2 },
+    { id: "Backend", label: "Backend", icon: Server },
+    { id: "Database", label: "Database", icon: Database },
+    { id: "Tools", label: "Tools & Workflow", icon: Wrench },
+  ];
+
+  const allSkills: SkillItem[] = [
+    // Frontend
+    { name: "React.js", category: "Frontend", tier: "Intermediate", description: "Hooks, component lifecycles, state management, SPA architecture" },
+    { name: "Next.js", category: "Frontend", tier: "Intermediate", description: "App Router, SSR, Server Components, client routing, SEO optimization" },
+    { name: "TypeScript", category: "Frontend", tier: "Intermediate", description: "Static typing, interfaces, generics, type-safe APIs & React components" },
+    { name: "JavaScript (ES6+)", category: "Frontend", tier: "Intermediate", description: "Async/await, promises, modern DOM manipulation, array methods" },
+    { name: "Tailwind CSS", category: "Frontend", tier: "Comfortable", description: "Responsive layouts, utility-first design, custom styling tokens" },
+    { name: "HTML5 & CSS3", category: "Frontend", tier: "Comfortable", description: "Semantic markup, modern Flexbox, CSS Grid, mobile-first design" },
+    { name: "Swiper.js & UI", category: "Frontend", tier: "Familiar", description: "Interactive carousels, responsive modal dialogs, UI animations" },
+
+    // Backend
+    { name: "Node.js", category: "Backend", tier: "Intermediate", description: "Asynchronous runtime, modular code, event loop, file streaming" },
+    { name: "Express.js", category: "Backend", tier: "Intermediate", description: "RESTful routing, custom middleware, error handling pipelines" },
+    { name: "REST APIs", category: "Backend", tier: "Intermediate", description: "CRUD endpoints, status codes, query filtering, JSON payloads" },
+    { name: "JWT & Auth", category: "Backend", tier: "Intermediate", description: "Token generation, cookie handling, role-based route protection" },
+    { name: "Nest.js", category: "Backend", tier: "Familiar", description: "TypeScript backend structure, controllers, services, dependency injection" },
+
+    // Database
+    { name: "PostgreSQL", category: "Database", tier: "Intermediate", description: "Relational schema design, SQL queries, foreign keys, table relations" },
+    { name: "Prisma ORM", category: "Database", tier: "Intermediate", description: "Type-safe database client, schema migrations, relational queries" },
+    { name: "MongoDB", category: "Database", tier: "Intermediate", description: "NoSQL document collections, CRUD queries, indexing, aggregations" },
+    { name: "Mongoose", category: "Database", tier: "Intermediate", description: "Data modeling, schema validation, population, query middleware" },
+    { name: "Firebase", category: "Database", tier: "Familiar", description: "Authentication, Firestore database, storage, social auth" },
+    { name: "Cloudinary", category: "Database", tier: "Familiar", description: "Cloud media uploads, image optimization, dynamic transformations" },
+
+    // Tools & Workflow
+    { name: "Git & GitHub", category: "Tools", tier: "Comfortable", description: "Version control, branching, pull requests, collaborative commits" },
+    { name: "Postman", category: "Tools", tier: "Comfortable", description: "API testing, inspecting headers, testing auth tokens, environment variables" },
+    { name: "Vercel & Netlify", category: "Tools", tier: "Comfortable", description: "Frontend & full-stack deployments, continuous Git deployment" },
+    { name: "Figma", category: "Tools", tier: "Familiar", description: "Inspecting UI designs, extracting assets, following design systems" },
+  ];
+
+  const filteredSkills = activeFilter === "All" 
+    ? allSkills 
+    : allSkills.filter(s => s.category === activeFilter);
+
+  const coreFocusAreas = [
     {
-      title: "Frontend",
-      skills: [
-        { name: "React.js", level: 80 },
-        { name: "JavaScript", level: 85 },
-        { name: "Nest.js", level: 85 },
-        { name: "Tailwind CSS", level: 92 },
-        { name: "CSS3", level: 90 },
-        { name: "HTML5", level: 95 },
+      title: "Frontend Engineering",
+      icon: Code2,
+      headline: "React, Next.js & TypeScript",
+      points: [
+        "Component architecture with React 18+ & Next.js",
+        "Type-safe application state with TypeScript",
+        "Responsive styling with Tailwind CSS & CSS3"
       ],
     },
     {
-      title: "Backend",
-      skills: [
-        { name: "Node.js", level: 90 },
-        { name: "Express.js", level: 88 },
-        { name: "JWT Auth", level: 78 },
+      title: "Backend & RESTful APIs",
+      icon: Server,
+      headline: "Node.js & Express Ecosystem",
+      points: [
+        "Modular REST API architecture & controllers",
+        "JWT Authentication & protected route guards",
+        "Secure request validation & error middleware"
       ],
     },
     {
-      title: "Database",
-      skills: [
-        { name: "MongoDB", level: 90 },
-        { name: "Mongoose", level: 88 },
-        { name: "Firebase", level: 80 },
-      ],
-    },
-    {
-      title: "Tools",
-      skills: [
-        { name: "Git", level: 92 },
-        { name: "Vercel", level: 88 },
-        { name: "Postman", level: 80 },
-        { name: "Figma", level: 75 },
+      title: "Database Architecture",
+      icon: Database,
+      headline: "PostgreSQL, Prisma & MongoDB",
+      points: [
+        "Relational database modeling with PostgreSQL & Prisma",
+        "NoSQL document storage & queries with MongoDB & Mongoose",
+        "Cloud authentication & storage with Firebase & Cloudinary"
       ],
     },
   ];
 
-  const activeSkills =
-    skillCategories.find((cat) => cat.title === activeCategory)?.skills || [];
-
-  // Trigger animation when category changes
-  useEffect(() => {
-    const newAnimatedLevels: Record<string, number> = {};
-
-    activeSkills.forEach((skill, index) => {
-      setTimeout(() => {
-        newAnimatedLevels[skill.name] = skill.level;
-        setAnimatedLevels((prev) => ({ ...prev, ...newAnimatedLevels }));
-      }, index * 150); // Staggered animation
-    });
-  }, [activeCategory]);
-
   return (
-    <section id="skills" className="py-24 px-4 bg-background">
-      <div className="container mx-auto max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-5 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 tracking-wide">
-            EXPERTISE
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Technologies I Master
+    <section id="skills" className="py-24 px-4 sm:px-6 bg-secondary/70 dark:bg-secondary/40 border-y border-border/80 relative overflow-hidden">
+      <div className="container mx-auto max-w-6xl relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-medium">
+            <Cpu className="w-3.5 h-3.5" />
+            <span>TECHNICAL EXPERTISE</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+            Technologies & Tools I Work With
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Crafting exceptional digital experiences with modern technologies
+          <p className="text-muted-foreground text-base">
+            A comprehensive overview of my technical stack, databases, frameworks, and practical proficiency levels as an aspiring software engineer.
           </p>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {skillCategories.map((category) => (
-            <button
-              key={category.title}
-              onClick={() => setActiveCategory(category.title)}
-              className={`px-8 py-3.5 rounded-2xl font-semibold transition-all duration-300 text-sm tracking-wide ${
-                activeCategory === category.title
-                  ? "bg-primary text-primary-foreground shadow-xl shadow-primary/20 scale-105"
-                  : "bg-card border border-border hover:border-primary/40 hover:text-foreground"
-              }`}
-            >
-              {category.title}
-            </button>
-          ))}
-        </div>
-
-        {/* Premium Progress Bars */}
-        <div className="max-w-3xl mx-auto">
-          <div className="space-y-10">
-            {activeSkills.map((skill, index) => {
-              const currentLevel = animatedLevels[skill.name] || 0;
-
-              return (
-                <div key={skill.name} className="group">
-                  <div className="flex justify-between items-end mb-4">
-                    <div>
-                      <span className="font-semibold text-base text-foreground tracking-tight">
-                        {skill.name}
-                      </span>
-                    </div>
-                    <span className="text-lg font-semibold text-primary tabular-nums transition-all duration-700">
-                      {currentLevel}%
-                    </span>
-                  </div>
-
-                  {/* Progress Bar Container */}
-                  <div className="relative h-5 bg-zinc-100 dark:bg-zinc-900 rounded-2xl overflow-hidden border border-border/60 shadow-inner">
-                    {/* Progress Fill */}
-                    <div
-                      className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary via-blue-600 to-violet-600 
-                                 rounded-2xl transition-all duration-1000 ease-out shadow-lg shadow-primary/30"
-                      style={{
-                        width: `${currentLevel}%`,
-                      }}
-                    />
-
-                    {/* Inner Glow Layer */}
-                    <div
-                      className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-white/30 via-transparent to-white/10 
-                                 rounded-2xl transition-opacity group-hover:opacity-80"
-                      style={{
-                        width: `${currentLevel}%`,
-                      }}
-                    />
-
-                    {/* Shine Effect */}
-                    <div
-                      className="absolute top-0 h-full bg-gradient-to-r from-transparent via-white/60 to-transparent 
-                                 animate-shimmer"
-                      style={{
-                        width: `${currentLevel}%`,
-                        animationDelay: `${index * 0.2}s`,
-                      }}
-                    />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Skills Grid */}
-        <div className="mt-24 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillCategories.map((category) => (
+        {/* 3 Core Architecture Pillars */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {coreFocusAreas.map((area) => (
             <div
-              key={category.title}
-              className="p-7 rounded-3xl bg-card border border-border hover:border-primary/30 
-                         transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
+              key={area.title}
+              className="p-6 rounded-3xl bg-card border border-border/80 hover:border-primary/40 hover:shadow-card transition-all duration-300 relative group"
             >
-              <h3 className="text-xl font-bold mb-6 text-primary">
-                {category.title}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill.name}
-                    className="px-5 py-2.5 text-sm rounded-2xl bg-secondary hover:bg-primary hover:text-primary-foreground 
-                               transition-all duration-300 font-medium"
-                  >
-                    {skill.name}
-                  </span>
-                ))}
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <area.icon className="w-6 h-6" />
               </div>
+              <h3 className="text-lg font-bold text-foreground mb-1">{area.title}</h3>
+              <p className="text-xs font-mono text-primary mb-4">{area.headline}</p>
+              <ul className="space-y-2">
+                {area.points.map((pt, i) => (
+                  <li key={i} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                    <CheckCircle2 className="w-4 h-4 text-primary/70 flex-shrink-0" />
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
+
+        {/* Category Filters */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+          {categories.map((cat) => {
+            const Icon = cat.icon;
+            const isActive = activeFilter === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveFilter(cat.id)}
+                className={`inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 ${
+                  isActive
+                    ? "bg-primary text-primary-foreground shadow-md shadow-primary/20 scale-105"
+                    : "bg-card border border-border/80 text-foreground hover:border-primary/50 hover:bg-secondary/60"
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span>{cat.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Visual Skills Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredSkills.map((skill) => (
+            <div
+              key={skill.name}
+              className="p-5 rounded-2xl bg-card border border-border/80 hover:border-primary/50 hover:shadow-card transition-all duration-200 flex flex-col justify-between group shadow-xs"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-primary/70 group-hover:scale-125 transition-transform" />
+                  <h4 className="font-bold text-foreground text-base tracking-tight">{skill.name}</h4>
+                </div>
+                <span
+                  className={`text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full ${
+                    skill.tier === "Intermediate"
+                      ? "bg-primary/15 text-primary border border-primary/30"
+                      : skill.tier === "Comfortable"
+                      ? "bg-secondary text-foreground font-semibold border border-border/80"
+                      : "bg-muted text-muted-foreground"
+                  }`}
+                >
+                  {skill.tier}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed pl-5">
+                {skill.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer Note */}
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground px-4 py-2 rounded-xl bg-secondary/60 border border-border/40">
+            <Sparkles className="w-3.5 h-3.5 text-primary" />
+            <span>Junior/Fresher level ready • Eager to learn, adapt, and build production software</span>
+          </div>
+        </div>
       </div>
-
-      {/* Premium Animations */}
-      <style>{`
-        @keyframes shimmer {
-          0% {
-            transform: translateX(-120%);
-          }
-          100% {
-            transform: translateX(300%);
-          }
-        }
-
-        .animate-shimmer {
-          animation: shimmer 2.5s infinite linear;
-        }
-      `}</style>
     </section>
   );
 };
